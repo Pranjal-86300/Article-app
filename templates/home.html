@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Article App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: lightblue;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: red;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .write-btn {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .write-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: lightgreen;
+            height: 300px; /* Ensures the card has more height than width */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card h3 {
+            margin-top: 0;
+        }
+
+        .delete-btn {
+            color: #dc3545;
+            text-align: right;
+            font-weight: bold;
+        }
+
+        .delete-btn:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>All Articles</h1>
+    <div class="container">
+        <a href="/add" class="write-btn">Write a New Article</a>
+        <div class="grid">
+            {% for article in articles %}
+            <div class="card">
+                <h3>{{ article.title }}</h3>
+                <p>{{ article.description }}</p>
+                <a href="/delete/{{ article.id }}" class="delete-btn">Delete</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
